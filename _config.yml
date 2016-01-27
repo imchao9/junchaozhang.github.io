@@ -5,9 +5,9 @@
 # Site
 title: Hexo
 subtitle:
-description:
-author: John Doe
-language:
+description: My Blog
+author: Junchao Zhang
+language: zh-Hans
 timezone:
 
 # URL
@@ -63,7 +63,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 ## Themes: http://hexo.io/themes/
-theme: landscape
+theme: next
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
