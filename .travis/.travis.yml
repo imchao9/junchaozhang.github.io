@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+- 0.12.7
+branches:
+  only:
+  - engine
+before_install:
+  - openssl aes-256-cbc -K $encrypted_db53c01d6abb_key -iv $encrypted_db53c01d6abb_iv
+  -in travisci_rsa.enc -out ~\/.ssh/travisci_rsa -d
+  - chmod 600 ~/.ssh/travisci_rsa
+  - eval $(ssh-agent)
+  - ssh-add ~/.ssh/travisci_rsa
+  - cp .travis/ssh_config ~/.ssh/config
+  - git config --global user.email "373446951@qq.com"
+  - git config --global user.name "bob12358"
+install:
+- npm install hexo-cli -g
+- npm install hexo --save
+- npm install
+script:
+- hexo clean
+- hexo generate
+- hexo deploy
