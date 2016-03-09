@@ -185,7 +185,7 @@ duoshuo_shortname: bob12358
 
 
 # Google Analytics
-#google_analytics:
+google_analytics: UA-74882139-1
 
 
 # Make duoshuo show UA
