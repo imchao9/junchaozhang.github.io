@@ -25,4 +25,8 @@ ssh -p 20072 root@xxx.com
 
 result:
 ​
+![Webstorm ssh server][1]
+
+[1]: http://imgur.com/8V0QkP4  "Webstorm ssh server"
+
 
