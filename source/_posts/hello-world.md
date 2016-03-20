@@ -1,37 +1,28 @@
-title: Hello World
----
-Welcome to [Hexo](http://hexo.io/)! This is your very first post. Check [documentation](http://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](http://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
-
-## Quick Start
-
-### Create a new post
-
-``` bash
-$ hexo new "My New Post"
+##1. 添加网络规则
+让docker容器内的22端口映射到宿主机上的12345
+```
+iptables -t nat -A DOCKER -p tcp -m tcp  --dport 12345 -j DNAT --to-destination 192.168.1.1:22
 ```
 
-More info: [Writing](http://hexo.io/docs/writing.html)
-
-### Run server
-
-``` bash
-$ hexo server
+##2. 修改docker容器的密码
+```
+passwd 
 ```
 
-More info: [Server](http://hexo.io/docs/server.html)
-
-### Generate static files
-
-``` bash
-$ hexo generate
+##2. 为docker容器安装ssh服务
+修改`/etc/ssh/sshd_config`的
+```
+PermitRootLogin yes
 ```
 
-More info: [Generating](http://hexo.io/docs/generating.html)
-
-### Deploy to remote sites
-
-``` bash
-$ hexo deploy
+##3. 测试一下 
+```
+ssh -p 20072 root@xxx.com 
 ```
 
-More info: [Deployment](http://hexo.io/docs/deployment.html)
+##4. 打开Webstorm
+在Tools-Deployment中添加一个server
+
+result:
+​
+
