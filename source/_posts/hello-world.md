@@ -24,4 +24,4 @@ ssh -p 20072 root@xxx.com
 在Tools-Deployment中添加一个server
 
 result:
-![WebStorm ssh server](http://imgur.com/8V0QkP4)
+![WebStorm ssh server](http://i.imgur.com/8V0QkP4.png?1)
