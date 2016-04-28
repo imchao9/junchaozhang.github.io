@@ -1,6 +1,10 @@
 title: 教你SSH到docker容器里
 date: 2016-01-27 21:46:18
-type: “docker”
+updated: 2016-04-29 01:09:36
+categories: “docker”
+tag: 
+- docker
+- ssh
 comments: true
 ---
 
@@ -15,10 +19,10 @@ comments: true
 	iptables -t nat -A DOCKER -p tcp -m tcp  --dport 12345 -j DNAT --to-destination 192.168.1.1:22
 	
 
-## 3. 修改docker容器的密码* 	
+## 3. 修改docker容器的密码
+	
 	passwd 
 	
-
 ## 4. 为docker容器安装ssh服务
 	sudo apt-get install openssh-server
 修改`/etc/ssh/sshd_config`的：
