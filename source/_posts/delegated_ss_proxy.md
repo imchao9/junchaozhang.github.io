@@ -1,6 +1,6 @@
 title:  在Linux系统上使用delegated将Shadowsocks转为http代理
 date: 2016-05-07 00:37:33
-categories:  “运维”
+categories:  "运维"
 tag: 
 - shadowsocks
 comments: true

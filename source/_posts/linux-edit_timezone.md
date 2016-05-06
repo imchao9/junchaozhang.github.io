@@ -1,6 +1,6 @@
 title: Linux修改时区
 date: 2016-05-07 00:50:24
-categories: “运维”
+categories: "运维"
 tag: 
 - linux
 comments: true

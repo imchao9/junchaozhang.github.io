@@ -1,6 +1,6 @@
 title: 在使用Travis-CI过程中遇到的一些问题
 date: 2016-05-07 00:46:44
-categories: "运维”
+categories: "运维"
 tag: 
 - travis-ci
 comments: true

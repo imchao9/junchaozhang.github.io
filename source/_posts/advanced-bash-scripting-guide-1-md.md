@@ -1,6 +1,6 @@
 title:  笔记 高级bash编程指南
 date: 2016-05-06 23:17:27
-categories:  “读书笔记”
+categories:  "读书笔记"
 tag: 
 - bash
 comments: true
@@ -31,7 +31,7 @@ echo "a = $a"
 (说明在代码块中对变量 a 所作的修改,影响了外边的变量a)  
 
 
-# a = 321
+result: a = 321
 ```
 
   
