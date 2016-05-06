@@ -6,9 +6,9 @@ tag:
 - spacemacs
 comments: true
 ---
-##1. 使用·env SHELL=/bin/bash emacs --insecure·进入
+## 1. 使用·env SHELL=/bin/bash emacs --insecure·进入
 
-##2. 修改init.el 
+## 2. 修改init.el 
 
 ~/.emacs.d/init.el
 
@@ -22,7 +22,7 @@ comments: true
 
 <!-- more --> 
 
-##3. 修改.spaceemacs
+## 3. 修改.spaceemacs
 
 ```
 dotspacemacs-elpa-https nil 

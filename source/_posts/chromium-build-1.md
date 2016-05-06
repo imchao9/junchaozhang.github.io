@@ -38,15 +38,15 @@ No package 'atk' found
 See //BUILD.gn:171:7: which caused the file to be included.
 ```
 
-####解决:
+#### 解决:
 
-#####1. 下载atk安装包
+##### 1. 下载atk安装包
 
 http://www.linuxfromscratch.org/blfs/view/svn/x/atk.html
 
-#####2. 编译安装atk:
+##### 2. 编译安装atk:
 
-#####3. 编译安装pango:
+##### 3. 编译安装pango:
 
 将configure中的:
 ```
@@ -56,10 +56,10 @@ have_cairo_freetype=true
 ```
 修改,编译安装
 
-#####4. 编译安装nss(The Network Security Services (NSS) package)
+##### 4. 编译安装nss(The Network Security Services (NSS) package)
 http://www.linuxfromscratch.org/blfs/view/svn/postlfs/nss.html
 
-###2. 问题2
+### 2. 问题2
 
 执行
 ```
@@ -95,7 +95,7 @@ cp -r /usr/include/glib-2.0/gio/ /usr/include/
 将/usr/include中的所有文件复制到该目录,问题解决.
 
 
-###3. 问题3
+### 3. 问题3
 
 ```
 /opt/chromiumorg/chromium/src/third_party/llvm-build/Release+Asserts/bin/../lib/clang/3.9.0/include/linux/sysinfo.h:10:2: error: unknown type name '__kernel_ulong_t'
@@ -114,7 +114,7 @@ typedef unsigned long   __kernel_ulong_t;
 添加到
  `/home/dev/Develop/chromiumorg/chromium/src/build/linux/debian_wheezy_amd64-sysroot/usr/include/x86_64-linux-gnu/asm/posix-types.h`
 
-##4. 问题4
+### 4. 问题4
 
 build error. Initial unount failed. Possibly crosbug.com/23443
 

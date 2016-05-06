@@ -6,7 +6,7 @@ tag:
 comments: true
 ---
 
-##问题：
+## 问题：
 
 File decryption fails (wrong final block length) on Windows
 
@@ -18,13 +18,13 @@ Your build has been stopped.
 ```
 <!-- more --> 
 
-##答案：
+## 答案：
 There is a report of this function not working on a local Windows machine. Please use a Linux or OS X machine.
 windows生成的ssh-key长度和linux/mac不一样，key不一样就无法将私钥解开
 
-##相关：
+## 相关：
 https://github.com/travis-ci/travis-ci/issues/4746
 https://docs.travis-ci.com/user/encrypting-files/
 
-##总结：
+## 总结：
 在这个过程中，我体会到了若理解了原理，解决起问题来会事半功倍，若我一开始弄清楚了openssl的错误就会知道是什么问题。

@@ -7,16 +7,16 @@ tag:
 comments: true
 ---
 
-##1. 更换nodewebkit图标
+## 1. 更换nodewebkit图标
 http://keenwon.com/1311.html
 
-###1, 制作图标
+### 1, 制作图标
 使用Axialis IconWorkshop
 
-###2. 更换图标
+### 2. 更换图标
 使用Resource Hacker
 
-##2. 使用nodewebkit将应用打包成exe
+## 2. 使用nodewebkit将应用打包成exe
 http://segmentfault.com/a/1190000002453237
 
 打包：在windows下打包test文件夹下文件为test.zip打包，并修改名字为test.nw
@@ -26,7 +26,7 @@ http://segmentfault.com/a/1190000002453237
 
 <!-- more --> 
 
-##2. 使用Inno Setup打包为setup.exe
+## 2. 使用Inno Setup打包为setup.exe
 
 http://blog.csdn.net/hougelou/article/details/www.c
 
