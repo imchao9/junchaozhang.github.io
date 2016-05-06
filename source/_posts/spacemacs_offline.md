@@ -20,6 +20,8 @@ comments: true
 
 ```
 
+<!-- more --> 
+
 ##3. 修改.spaceemacs
 
 ```

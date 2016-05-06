@@ -16,7 +16,7 @@ http://www.delegate.org/delegate/download/
 tar -zxvf 
 make
 ```
-
+<!-- more --> 
 ## 3. 进入src目录下执行
 
 ```

@@ -16,6 +16,7 @@ bad decrypt
 The command "openssl aes-256-cbc -K encrypted048ea30036f2key−ivencrypted048ea30036f2key−ivencrypted_048ea30036f2_iv -in file.enc -out file -d" failed and exited with 1 during .
 Your build has been stopped.
 ```
+<!-- more --> 
 
 ##答案：
 There is a report of this function not working on a local Windows machine. Please use a Linux or OS X machine.

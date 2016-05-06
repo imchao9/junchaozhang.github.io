@@ -15,7 +15,7 @@ https://github.com/nwjs/nw.js/wiki/How-to-package-and-distribute-your-apps
 
 Contents/Resources/nw.icns: icon of your app.
 Contents/Info.plist: the apple package description file.
-
+<!-- more --> 
 ###1. 使用IconKit制作图标
 
 ###2. 更换图标

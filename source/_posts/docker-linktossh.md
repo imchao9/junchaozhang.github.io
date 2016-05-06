@@ -20,7 +20,7 @@ docker inspect --format='{{.NetworkSettings.IPAddress}}' $CONTAINER_ID
 ``` 
 iptables -t nat -A DOCKER -p tcp -m tcp  --dport 12345 -j DNAT --to-destination 192.168.1.1:22
 ```
-
+<!-- more --> 
 ## 3. 修改docker容器的密码
 ```
 passwd 

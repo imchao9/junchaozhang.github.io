@@ -17,7 +17,7 @@ comments: true
 ## 关键部分:
 ### 1. 问题1
 执行`ninja -C out/Default chrome`后,
-
+<!-- more --> 
 ```
 ERROR at //ui/accessibility/BUILD.gn:16:19: Script returned non-zero exit code.
     atk_lib_dir = exec_script(pkg_config_script,

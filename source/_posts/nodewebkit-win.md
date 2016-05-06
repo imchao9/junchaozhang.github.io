@@ -24,7 +24,7 @@ http://segmentfault.com/a/1190000002453237
 打包exe: copy /b nw.exe+test.nw test.exe
 ```
 
-
+<!-- more --> 
 
 ##2. 使用Inno Setup打包为setup.exe
 
