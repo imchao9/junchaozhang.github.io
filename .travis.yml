@@ -16,6 +16,7 @@ before_install:
 install:
 - npm install hexo-cli -g
 - npm install hexo --save
+  npm install hexo-generator-search --save
 - npm install
 script:
 - hexo clean

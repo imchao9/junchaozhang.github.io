@@ -232,7 +232,11 @@ mathjax:
 
 
 # Swiftype Search API Key
-swiftype_key: _BECPkCeSZgYqzHNx-5m
+ #swiftype_key: _BECPkCeSZgYqzHNx-5m
+
+search:
+ path: search.xml
+ field: post
 
 # Baidu Analytics ID
 baidu_analytics: a80a7556a58bfa2064aaf8976a7aff02
