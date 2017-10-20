@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+    
+    <entry>
+      <title><![CDATA[Node.js console.log引发的思考]]></title>
+      <url>/2017/10/20/node-console-log/</url>
+      <content type="html"><![CDATA[<h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1. 背景"></a>1. 背景</h1><p>最近突然思考了一个问题，在一个for循环内：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(;;) &#123;</div><div class="line">  <span class="keyword">let</span> a = <span class="string">"test"</span>;</div><div class="line">  <span class="built_in">console</span>.log(a);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a = <span class="string">''</span>;</div><div class="line"><span class="keyword">for</span>(;;) &#123;</div><div class="line">  a = <span class="string">"test"</span>;</div><div class="line">  <span class="built_in">console</span>.log(a);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这两者会不会有什么差异</p>
+<p>一个疑问</p>
+<p>我声明的一个变量究竟放到哪里了</p>
+<p><a href="https://stackoverflow.com/questions/33283446/loop-of-console-log-in-nodejs" target="_blank" rel="external">https://stackoverflow.com/questions/33283446/loop-of-console-log-in-nodejs</a></p>
+<p><a href="https://github.com/nodejs/node/issues/11568" target="_blank" rel="external">https://github.com/nodejs/node/issues/11568</a></p>
+<p><a href="https://github.com/nodejs/node/issues/4280" target="_blank" rel="external">https://github.com/nodejs/node/issues/4280</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> node.js </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> node.js </tag>
+            
+            <tag> [object Object] </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Linux修改时区]]></title>
+      <url>/2016/05/07/linux-edit_timezone/</url>
+      <content type="html"><![CDATA[<p>tzselect </p>
+<p>tzselect：<br>执行tzselect命令–&gt;选择Asia–&gt;选择China–&gt;选择east China - Beijing, Guangdong, Shanghai, etc–&gt;然后输入1。过程如下图：</p>
+<p>cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 运维 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[在使用Travis-CI过程中遇到的一些问题]]></title>
+      <url>/2016/05/07/travisci_problem/</url>
+      <content type="html"><![CDATA[<h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><p>File decryption fails (wrong final block length) on Windows</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">bad</span> <span class="selector-tag">decrypt</span></div><div class="line">139709116544672<span class="selector-pseudo">:error</span><span class="selector-pseudo">:0606506D</span><span class="selector-pseudo">:digital</span> <span class="selector-tag">envelope</span> <span class="selector-tag">routines</span><span class="selector-pseudo">:EVP_DecryptFinal_ex</span><span class="selector-pseudo">:wrong</span> <span class="selector-tag">final</span> <span class="selector-tag">block</span> <span class="selector-tag">length</span><span class="selector-pseudo">:evp_enc.c</span><span class="selector-pseudo">:532</span>:</div><div class="line"><span class="selector-tag">The</span> <span class="selector-tag">command</span> "<span class="selector-tag">openssl</span> <span class="selector-tag">aes-256-cbc</span> <span class="selector-tag">-K</span> <span class="selector-tag">encrypted048ea30036f2key</span>−<span class="selector-tag">ivencrypted048ea30036f2key</span>−<span class="selector-tag">ivencrypted_048ea30036f2_iv</span> <span class="selector-tag">-in</span> <span class="selector-tag">file</span><span class="selector-class">.enc</span> <span class="selector-tag">-out</span> <span class="selector-tag">file</span> <span class="selector-tag">-d</span>" <span class="selector-tag">failed</span> <span class="selector-tag">and</span> <span class="selector-tag">exited</span> <span class="selector-tag">with</span> 1 <span class="selector-tag">during</span> .</div><div class="line"><span class="selector-tag">Your</span> <span class="selector-tag">build</span> <span class="selector-tag">has</span> <span class="selector-tag">been</span> <span class="selector-tag">stopped</span>.</div></pre></td></tr></table></figure>
+<a id="more"></a> 
+<h2 id="答案："><a href="#答案：" class="headerlink" title="答案："></a>答案：</h2><p>There is a report of this function not working on a local Windows machine. Please use a Linux or OS X machine.<br>windows生成的ssh-key长度和linux/mac不一样，key不一样就无法将私钥解开</p>
+<h2 id="相关："><a href="#相关：" class="headerlink" title="相关："></a>相关：</h2><p><a href="https://github.com/travis-ci/travis-ci/issues/4746" target="_blank" rel="external">https://github.com/travis-ci/travis-ci/issues/4746</a><br><a href="https://docs.travis-ci.com/user/encrypting-files/" target="_blank" rel="external">https://docs.travis-ci.com/user/encrypting-files/</a></p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>在这个过程中，我体会到了若理解了原理，解决起问题来会事半功倍，若我一开始弄清楚了openssl的错误就会知道是什么问题。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 运维 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> travis-ci </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[在Linux系统上使用delegated将Shadowsocks转为http代理]]></title>
+      <url>/2016/05/07/delegated_ss_proxy/</url>
+      <content type="html"><![CDATA[<h2 id="1-下载delegated"><a href="#1-下载delegated" class="headerlink" title="1. 下载delegated"></a>1. 下载delegated</h2><p><a href="http://www.delegate.org/delegate/download/" target="_blank" rel="external">http://www.delegate.org/delegate/download/</a></p>
+<h2 id="2-使用压缩并编译"><a href="#2-使用压缩并编译" class="headerlink" title="2. 使用压缩并编译"></a>2. 使用压缩并编译</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">tar -zxvf</span> </div><div class="line"><span class="attribute">make</span></div></pre></td></tr></table></figure>
+<a id="more"></a> 
+<h2 id="3-进入src目录下执行"><a href="#3-进入src目录下执行" class="headerlink" title="3. 进入src目录下执行"></a>3. 进入src目录下执行</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">./delegated -P7777 <span class="attribute">SERVER</span>=http <span class="attribute">SOCKS</span>=127.0.0.1:1080 </div><div class="line">./delegated -P7778 <span class="attribute">SERVER</span>=https <span class="attribute">SOCKS</span>=127.0.0.1:1080 </div><div class="line"><span class="builtin-name">export</span> <span class="attribute">http_proxy</span>=http://127.0.0.1:7777</div><div class="line"><span class="builtin-name">export</span> <span class="attribute">https_proxy</span>=http://127.0.0.1:7778</div><div class="line">delegated -P&lt;服务端口&gt; -Fkill</div></pre></td></tr></table></figure>
+<h2 id="4-Enjoy"><a href="#4-Enjoy" class="headerlink" title="4. Enjoy"></a>4. Enjoy</h2><p>参考：<br><a href="http://www.delegate.org/delegate/SOCKS/" target="_blank" rel="external">http://www.delegate.org/delegate/SOCKS/</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">`$0 这个程式的执行名字  </div><div class="line"><span class="meta">$</span><span class="bash">n 这个程式的第n个参数值，n=1..9  </span></div><div class="line"><span class="meta">$</span><span class="bash">* 这个程式的所有参数,此选项参数可超过9个。  </span></div><div class="line"><span class="meta">$</span><span class="bash"><span class="comment"># 这个程式的参数个数  </span></span></div><div class="line"><span class="meta">$</span><span class="bash">$ 这个程式的PID(脚本运行的当前进程ID号)  </span></div><div class="line"><span class="meta">$</span><span class="bash">! 执行上一个背景指令的PID(后台运行的最后一个进程的进程ID号)  </span></div><div class="line"><span class="meta">$</span><span class="bash">? 执行上一个指令的返回值 (显示最后命令的退出状态。0表示没有错误，其他任何值表明有错误)  </span></div><div class="line"><span class="meta">$</span><span class="bash">- 显示shell使用的当前选项，与<span class="built_in">set</span>命令功能相同  </span></div><div class="line"><span class="meta">$</span><span class="bash">@ 跟$*类似，但是可以当作数组用</span></div></pre></td></tr></table></figure>
+<h2 id="Linux-test-shell-用法"><a href="#Linux-test-shell-用法" class="headerlink" title="Linux test shell 用法:"></a>Linux test shell <a href=""></a>用法:</h2><figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">`1. 关于某个文件名的『类型』侦测(存在与否)，如 test -e filename  </div><div class="line">-<span class="ruby">e 该『文件名』是否存在？(常用)  </span></div><div class="line"><span class="ruby">-f 该『文件名』是否为文件(file)？(常用)  </span></div><div class="line"><span class="ruby">-d 该『文件名』是否为目录(directory)？(常用)  </span></div><div class="line"><span class="ruby">-b 该『文件名』是否为一个 block device 装置？   </span></div><div class="line"><span class="ruby">-c 该『文件名』是否为一个 character device 装置？   </span></div><div class="line"><span class="ruby">-S 该『文件名』是否为一个 Socket 文件？   </span></div><div class="line"><span class="ruby">-p 该『文件名』是否为一个 FIFO (pipe) 文件？   </span></div><div class="line"><span class="ruby">-L 该『文件名』是否为一个连结档？</span></div><div class="line"><span class="ruby"><span class="number">2</span>. 关于文件的权限侦测，如 test -r filename   </span></div><div class="line"><span class="ruby">-r 侦测该文件名是否具有『可读』的属性？   </span></div><div class="line"><span class="ruby">-w 侦测该文件名是否具有『可写』的属性？   </span></div><div class="line"><span class="ruby">-x 侦测该文件名是否具有『可执行』的属性？   </span></div><div class="line"><span class="ruby">-u 侦测该文件名是否具有『SUID』的属性？   </span></div><div class="line"><span class="ruby">-g 侦测该文件名是否具有『SGID』的属性？   </span></div><div class="line"><span class="ruby">-k 侦测该文件名是否具有『Sticky bit』的属性？   </span></div><div class="line"><span class="ruby">-s 侦测该文件名是否为『非空白文件』？<span class="number">3</span>. 两个文件之间的比较，如： test file1 -nt file2  </span></div><div class="line"><span class="ruby">-nt (newer than)判断 file1 是否比 file2 新   </span></div><div class="line"><span class="ruby">-ot (older than)判断 file1 是否比 file2 旧   </span></div><div class="line"><span class="ruby">-ef 判断 file2 与 file2 是否为同一文件，可用在判断 hard link 的判定上。 主要意义在判定，两个文件是否均指向同一个 inode 哩！<span class="number">4</span>. 关于两个整数之间的判定，例如 test n1 -eq n2  </span></div><div class="line"><span class="ruby">-eq 两数值相等 (equal)  </span></div><div class="line"><span class="ruby">-ne 两数值不等 (<span class="keyword">not</span> equal)  </span></div><div class="line"><span class="ruby">-gt n1 大于 n2 (greater than)  </span></div><div class="line"><span class="ruby">-lt n1 小于 n2 (less than)  </span></div><div class="line"><span class="ruby">-ge n1 大于等于 n2 (greater than <span class="keyword">or</span> equal)  </span></div><div class="line"><span class="ruby">-le n1 小于等于 n2 (less than <span class="keyword">or</span> equal)<span class="number">5</span>. 判定字符串的数据   </span></div><div class="line"><span class="ruby">test -z string 判定字符串是否为 <span class="number">0</span> ？若 string 为空字符串，则为 <span class="literal">true</span>  </span></div><div class="line"><span class="ruby">test -n string 判定字符串是否非为 <span class="number">0</span> ？若 string 为空字符串，则为 <span class="literal">false</span>。   </span></div><div class="line"><span class="ruby">注： -n 亦可省略   </span></div><div class="line"><span class="ruby">test str1 = str2 判定 str1 是否等于 str2 ，若相等，则回传 <span class="literal">true</span>  </span></div><div class="line"><span class="ruby">test str1 != str2 判定 str1 是否不等于 str2 ，若相等，则回传 false6. 多重条件判定，例如： test -r filename -a -x filename  </span></div><div class="line"><span class="ruby">-a (<span class="keyword">and</span>)两状况同时成立！例如 test -r file -a -x file，则 file 同时具有 r 与 x 权限时，才回传 <span class="literal">true</span>。   </span></div><div class="line"><span class="ruby">-o (<span class="keyword">or</span>)两状况任何一个成立！例如 test -r file -o -x file，则 file 具有 r 或 x 权限时，就可回传 <span class="literal">true</span>。   </span></div><div class="line"><span class="ruby">! 反相状态，如 test ! -x file ，当 file 不具有 x 时，回传 <span class="literal">true</span>分享：</span></div></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> 运维 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> shadowsocks </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Nginx开启gzip]]></title>
+      <url>/2016/05/07/nginx-opengzip/</url>
+      <content type="html"><![CDATA[<p>nginx默认是开启gzip的</p>
+<p>但默认只是对html开启gzip<br>需要做如下配置:<br><a id="more"></a><br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">gzip_types <span class="built_in">text</span>/plain <span class="built_in">text</span>/css <span class="built_in">application</span>/json <span class="built_in">application</span>/x-javascript <span class="built_in">text</span>/xml <span class="built_in">application</span>/xml <span class="built_in">application</span>/xml+rss <span class="built_in">text</span>/javascript <span class="built_in">text</span>/html;</div><div class="line">gzip_types *;</div><div class="line">gzip_http_version <span class="number">1.0</span>;</div></pre></td></tr></table></figure></p>
+<p>若使用反向代理，需要加上：</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">proxy_set_header Accept-Encoding <span class="string">"gzip"</span><span class="comment">;</span></div></pre></td></tr></table></figure>
+<p>测试是否打开Nginx：</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -<span class="literal">I</span> -H <span class="string">"Accept-Encoding: gzip, deflate"</span> <span class="string">"https://www.codemao.cn/components/underscore/underscore.js"</span></div></pre></td></tr></table></figure>]]></content>
+      
+        <categories>
+            
+            <category> 运维 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> nginx </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Nwjs 制作Mac客户端]]></title>
+      <url>/2016/05/07/nodewebkit-mac/</url>
+      <content type="html"><![CDATA[<h2 id="1-将app-nw放到Contents-Resources里"><a href="#1-将app-nw放到Contents-Resources里" class="headerlink" title="1. 将app.nw放到Contents/Resources里"></a>1. 将app.nw放到Contents/Resources里</h2><p><a href="https://github.com/nwjs/nw.js/wiki/How-to-package-and-distribute-your-apps" target="_blank" rel="external">https://github.com/nwjs/nw.js/wiki/How-to-package-and-distribute-your-apps</a></p>
+<h2 id="2-替换nodewebkit图标"><a href="#2-替换nodewebkit图标" class="headerlink" title="2. 替换nodewebkit图标"></a>2. 替换nodewebkit图标</h2><p>Contents/Resources/nw.icns: icon of your app.<br>Contents/Info.plist: the apple package description file.<br><a id="more"></a> </p>
+<h3 id="1-使用IconKit制作图标"><a href="#1-使用IconKit制作图标" class="headerlink" title="1. 使用IconKit制作图标"></a>1. 使用IconKit制作图标</h3><h3 id="2-更换图标"><a href="#2-更换图标" class="headerlink" title="2. 更换图标"></a>2. 更换图标</h3><p>显示简介-直接拖到图标处即可</p>
+<h2 id="3-打包为dmg"><a href="#3-打包为dmg" class="headerlink" title="3. 打包为dmg"></a>3. 打包为dmg</h2><p><a href="http://bbs.feng.com/read-htm-tid-6724285.html" target="_blank" rel="external">http://bbs.feng.com/read-htm-tid-6724285.html</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 开发 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> nwjs </tag>
+            
+            <tag> mac </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Nwjs 制作windows客户端]]></title>
+      <url>/2016/05/07/nodewebkit-win/</url>
+      <content type="html"><![CDATA[<h2 id="1-更换nodewebkit图标"><a href="#1-更换nodewebkit图标" class="headerlink" title="1. 更换nodewebkit图标"></a>1. 更换nodewebkit图标</h2><p><a href="http://keenwon.com/1311.html" target="_blank" rel="external">http://keenwon.com/1311.html</a></p>
+<h3 id="1-制作图标"><a href="#1-制作图标" class="headerlink" title="1, 制作图标"></a>1, 制作图标</h3><p>使用Axialis IconWorkshop</p>
+<h3 id="2-更换图标"><a href="#2-更换图标" class="headerlink" title="2. 更换图标"></a>2. 更换图标</h3><p>使用Resource Hacker</p>
+<h2 id="2-使用nodewebkit将应用打包成exe"><a href="#2-使用nodewebkit将应用打包成exe" class="headerlink" title="2. 使用nodewebkit将应用打包成exe"></a>2. 使用nodewebkit将应用打包成exe</h2><p><a href="http://segmentfault.com/a/1190000002453237" target="_blank" rel="external">http://segmentfault.com/a/1190000002453237</a></p>
+<p>打包：在windows下打包test文件夹下文件为test.zip打包，并修改名字为test.nw<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">打包exe: copy /<span class="selector-tag">b</span> nw.exe+test<span class="selector-class">.nw</span> test.exe</div></pre></td></tr></table></figure></p>
+<a id="more"></a> 
+<h2 id="2-使用Inno-Setup打包为setup-exe"><a href="#2-使用Inno-Setup打包为setup-exe" class="headerlink" title="2. 使用Inno Setup打包为setup.exe"></a>2. 使用Inno Setup打包为setup.exe</h2><p><a href="http://blog.csdn.net/hougelou/article/details/www.c" target="_blank" rel="external">http://blog.csdn.net/hougelou/article/details/www.c</a></p>
+<p>创建快捷方式：<br><a href="http://yedward.net/?id=104" target="_blank" rel="external">http://yedward.net/?id=104</a><br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-attr">[Tasks]</span></div><div class="line"><span class="selector-tag">Name</span>: "<span class="selector-tag">desktopicon</span>"; <span class="selector-tag">Description</span>: "&#123;<span class="attribute">cm</span>:CreateDesktopIcon&#125;"; <span class="selector-tag">GroupDescription</span>: "&#123;<span class="attribute">cm</span>:AdditionalIcons&#125;"; <span class="selector-tag">Flags</span>: <span class="selector-tag">checkablealone</span></div><div class="line"><span class="selector-tag">Name</span>: "<span class="selector-tag">quicklaunchicon</span>"; <span class="selector-tag">Description</span>: "&#123;<span class="attribute">cm</span>:CreateQuickLaunchIcon&#125;"; <span class="selector-tag">GroupDescription</span>: "&#123;<span class="attribute">cm</span>:AdditionalIcons&#125;"; <span class="selector-tag">Flags</span>: <span class="selector-tag">checkablealone</span></div></pre></td></tr></table></figure></p>
+<p>新建文件夹：<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="section">[Setup]</span></div><div class="line"><span class="attr">AppendDefaultDirName</span>=<span class="literal">no</span></div></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 开发 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> nwjs </tag>
+            
+            <tag> windows </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Spacemacs 修改代理]]></title>
+      <url>/2016/05/07/spacemacs_offline/</url>
+      <content type="html"><![CDATA[<h2 id="1-使用·env-SHELL-bin-bash-emacs-–insecure·进入"><a href="#1-使用·env-SHELL-bin-bash-emacs-–insecure·进入" class="headerlink" title="1. 使用·env SHELL=/bin/bash emacs –insecure·进入"></a>1. 使用·env SHELL=/bin/bash emacs –insecure·进入</h2><h2 id="2-修改init-el"><a href="#2-修改init-el" class="headerlink" title="2. 修改init.el"></a>2. 修改init.el</h2><p>~/.emacs.d/init.el</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="name">setq</span> url-http-proxy-basic-auth-storage</div><div class="line">      (<span class="name">list</span> (<span class="name">list</span> <span class="string">"proxy.company:8080"</span></div><div class="line">                  (<span class="name">cons</span> <span class="string">"USERHERE"</span></div><div class="line">                        (<span class="name">base64-encode-string</span> <span class="string">"USERHERE:PASS"</span>)))))</div></pre></td></tr></table></figure>
+<a id="more"></a> 
+<h2 id="3-修改-spaceemacs"><a href="#3-修改-spaceemacs" class="headerlink" title="3. 修改.spaceemacs"></a>3. 修改.spaceemacs</h2><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dotspacemacs-elpa-https <span class="literal">nil</span></div></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> 开发 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> emacs </tag>
+            
+            <tag> spacemacs </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Chromium编译问题总结]]></title>
+      <url>/2016/05/06/chromium-build-1/</url>
+      <content type="html"><![CDATA[<p>参考资料:<br>谷歌Chromium官网 <a href="https://www.chromium.org/developers/how-tos/get-the-code" target="_blank" rel="external">https://www.chromium.org/developers/how-tos/get-the-code</a></p>
+<h2 id="关键部分"><a href="#关键部分" class="headerlink" title="关键部分:"></a>关键部分:</h2><h3 id="1-问题1"><a href="#1-问题1" class="headerlink" title="1. 问题1"></a>1. 问题1</h3><p>执行<code>ninja -C out/Default chrome</code>后,<br><a id="more"></a><br><figure class="highlight subunit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ERROR </span>at //ui/accessibility/BUILD.gn:16:19: Script returned non-zero exit code.</div><div class="line">    atk_lib_dir = exec_script(pkg_config_script,</div><div class="line">                  ^----------</div><div class="line">Current dir: /opt/chromiumorg/chromium/src/out/Default/</div><div class="line">Command: python -- /opt/chromiumorg/chromium/src/build/config/linux/pkg-config.py --libdir atk</div><div class="line">Returned 1 and printed out:</div><div class="line"></div><div class="line"><span class="keyword">Error </span>from pkg-config.</div><div class="line"></div><div class="line">stderr:</div><div class="line"></div><div class="line">Package atk was not found in the pkg-config search path.</div><div class="line">Perhaps you should add the directory containing `atk.pc'</div><div class="line">to the PKG_CONFIG_PATH environment variable</div><div class="line">No package 'atk' found</div><div class="line"></div><div class="line">See //BUILD.gn:171:7: which caused the file to be included.</div></pre></td></tr></table></figure></p>
+<h4 id="解决"><a href="#解决" class="headerlink" title="解决:"></a>解决:</h4><h5 id="1-下载atk安装包"><a href="#1-下载atk安装包" class="headerlink" title="1. 下载atk安装包"></a>1. 下载atk安装包</h5><p><a href="http://www.linuxfromscratch.org/blfs/view/svn/x/atk.html" target="_blank" rel="external">http://www.linuxfromscratch.org/blfs/view/svn/x/atk.html</a></p>
+<h5 id="2-编译安装atk"><a href="#2-编译安装atk" class="headerlink" title="2. 编译安装atk:"></a>2. 编译安装atk:</h5><h5 id="3-编译安装pango"><a href="#3-编译安装pango" class="headerlink" title="3. 编译安装pango:"></a>3. 编译安装pango:</h5><p>将configure中的:<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="attr">have_cairo</span>=<span class="literal">true</span>  </div><div class="line"><span class="attr">have_cairo_png</span>=<span class="literal">true</span>  </div><div class="line"><span class="attr">have_cairo_freetype</span>=<span class="literal">true</span></div></pre></td></tr></table></figure></p>
+<p>修改,编译安装</p>
+<h5 id="4-编译安装nss-The-Network-Security-Services-NSS-package"><a href="#4-编译安装nss-The-Network-Security-Services-NSS-package" class="headerlink" title="4. 编译安装nss(The Network Security Services (NSS) package)"></a>4. 编译安装nss(The Network Security Services (NSS) package)</h5><p><a href="http://www.linuxfromscratch.org/blfs/view/svn/postlfs/nss.html" target="_blank" rel="external">http://www.linuxfromscratch.org/blfs/view/svn/postlfs/nss.html</a></p>
+<h3 id="2-问题2"><a href="#2-问题2" class="headerlink" title="2. 问题2"></a>2. 问题2</h3><p>执行<br><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ninja -<span class="keyword">C</span> out_amd64-generic/<span class="keyword">Release</span> -j1 chrome chrome_sandbox nacl_helper</div></pre></td></tr></table></figure></p>
+<p>Error Log:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">..</span>/<span class="built_in">..</span>/third_party/llvm-build/Release+Asserts/bin/clang++ -MMD -MF obj/base/base/linux_util.o.d -DUSE_SYMBOLIZE -DV8_DEPRECATION_WARNINGS <span class="attribute">-DENABLE_MDNS</span>=1 -DENABLE_NOTIFICATIONS -DENABLE_PEPPER_CDMS <span class="attribute">-DENABLE_PLUGINS</span>=1 <span class="attribute">-DENABLE_PDF</span>=1 <span class="attribute">-DENABLE_PRINTING</span>=1 <span class="attribute">-DENABLE_BASIC_PRINTING</span>=1 <span class="attribute">-DENABLE_PRINT_PREVIEW</span>=1 <span class="attribute">-DENABLE_SPELLCHECK</span>=1 -DUSE_UDEV -DUI_COMPOSITOR_IMAGE_TRANSPORT <span class="attribute">-DUSE_AURA</span>=1 <span class="attribute">-DUSE_PANGO</span>=1 <span class="attribute">-DUSE_CAIRO</span>=1 <span class="attribute">-DUSE_CLIPBOARD_AURAX11</span>=1 <span class="attribute">-DUSE_DEFAULT_RENDER_THEME</span>=1 <span class="attribute">-DUSE_GLIB</span>=1 <span class="attribute">-DUSE_NSS_CERTS</span>=1 <span class="attribute">-DUSE_X11</span>=1 <span class="attribute">-DENABLE_WEBRTC</span>=1 <span class="attribute">-DENABLE_EXTENSIONS</span>=1 <span class="attribute">-DENABLE_TASK_MANAGER</span>=1 <span class="attribute">-DENABLE_THEMES</span>=1 <span class="attribute">-DENABLE_CAPTIVE_PORTAL_DETECTION</span>=1 <span class="attribute">-DENABLE_SESSION_SERVICE</span>=1 <span class="attribute">-DENABLE_APP_LIST</span>=1 <span class="attribute">-DENABLE_SETTINGS_APP</span>=1 <span class="attribute">-DENABLE_SUPERVISED_USERS</span>=1 <span class="attribute">-DENABLE_SERVICE_DISCOVERY</span>=1 <span class="attribute">-DENABLE_AUTOFILL_DIALOG</span>=1 <span class="attribute">-DENABLE_TOPCHROME_MD</span>=1 -DFULL_SAFE_BROWSING -DSAFE_BROWSING_CSD -DSAFE_BROWSING_DB_LOCAL -DCHROMIUM_BUILD <span class="attribute">-DENABLE_MEDIA_ROUTER</span>=1 -DFIELDTRIAL_TESTING_ENABLED <span class="attribute">-DCR_CLANG_REVISION</span>=267383-1 <span class="attribute">-D_FILE_OFFSET_BITS</span>=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_DEBUG <span class="attribute">-DDYNAMIC_ANNOTATIONS_ENABLED</span>=1 <span class="attribute">-DWTF_USE_DYNAMIC_ANNOTATIONS</span>=1 <span class="attribute">-D_GLIBCXX_DEBUG</span>=1 -DBASE_IMPLEMENTATION -I<span class="built_in">..</span>/<span class="built_in">..</span> -Igen -I<span class="built_in">..</span>/<span class="built_in">..</span>/build/linux/debian_wheezy_amd64-sysroot/usr/local/include/glib-2.0 -I<span class="built_in">..</span>/<span class="built_in">..</span>/build/linux/debian_wheezy_amd64-sysroot/usr/local/lib/glib-2.0/include -fno-strict-aliasing <span class="attribute">--param</span>=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pipe -B<span class="built_in">..</span>/<span class="built_in">..</span>/third_party/binutils/Linux_x64/Release/bin -fcolor-diagnostics <span class="attribute">-fdebug-prefix-map</span>=/opt/chromiumorg/chromium/src=. -pthread -m64 <span class="attribute">-march</span>=x86-64 -Wall -Werror -Wextra -Wno-missing-field-initializers -Wno-unused-parameter -Wno-c++11-narrowing -Wno-covered-switch-default -Wno-deprecated-register -Wno-unneeded-internal-declaration -Wno-inconsistent-missing-override -Wno-shift-negative-value -Wno-undefined-var-template -O0 -g2 -gsplit-dwarf <span class="attribute">--sysroot</span>=../../build/linux/debian_wheezy_amd64-sysroot <span class="attribute">-fvisibility</span>=hidden -Xclang -load -Xclang <span class="built_in">..</span>/<span class="built_in">..</span>/third_party/llvm-build/Release+Asserts/lib/libFindBadConstructs.so -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang check-templates -Xclang -plugin-arg-find-bad-constructs -Xclang follow-macro-expansion -Xclang -plugin-arg-find-bad-constructs -Xclang check-implicit-copy-ctors -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wno-char-subscripts -Wexit-time-destructors -fno-threadsafe-statics -fvisibility-inlines-hidden -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare <span class="attribute">-std</span>=gnu++11 -fno-rtti -fno-exceptions -c <span class="built_in">..</span>/<span class="built_in">..</span>/base/linux_util.cc -o obj/base/base/linux_util.o</div><div class="line">Release/gen/library_loaders/libgio.h ::19: error: gio/gio.h file <span class="keyword">not</span> found</div><div class="line">   #include &lt;gio/gio.h&gt;</div><div class="line">                  </div><div class="line">1 <span class="builtin-name">error</span> generated.</div><div class="line">ninja: build stopped: subcommand failed</div></pre></td></tr></table></figure>
+<p>Solve:</p>
+<pre><code>1. 首先我先google了一遍,并且在chromium-dev讨论组中搜索,但没什么结果
+2. 怀疑是include path 的问题 于是查看gcc -v ,发现路径中含有/usr/include,照着 http://linuxintro.org/wiki/Error_messages_and_their_solutions#gio操作:
+</code></pre><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Symptom, <span class="keyword">in</span> <span class="keyword">this</span> <span class="keyword">case</span> building from <span class="string">gqcam:</span></div><div class="line"><span class="regexp">/usr/</span>include<span class="regexp">/gdk/</span>gdkapplaunchcontext.<span class="string">h:</span><span class="number">30</span>:<span class="number">21</span>: fatal <span class="string">error:</span> gio/gio.<span class="string">h:</span> No such file or directory</div><div class="line">Solution, <span class="keyword">in</span> <span class="keyword">this</span> <span class="keyword">case</span> <span class="keyword">for</span> SUSE Linux <span class="number">11.3</span>:</div><div class="line">cp -r <span class="regexp">/usr/</span>include<span class="regexp">/glib-2.0/</span>gio<span class="regexp">/ /</span>usr<span class="regexp">/include/</span></div></pre></td></tr></table></figure>
+<p>问题依旧</p>
+<ol>
+<li>发现报错信息中执行的是clang++ 找到这个目录,发现clang++的include目录在:<br><code>/home/dev/Develop/chromiumorg/chromium/src/third_party/llvm-build/Release+Asserts/lib/clang/3.9.0/include</code><br>将/usr/include中的所有文件复制到该目录,问题解决.</li>
+</ol>
+<h3 id="3-问题3"><a href="#3-问题3" class="headerlink" title="3. 问题3"></a>3. 问题3</h3><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/opt/chromiumorg/chromium/src/third_party/llvm-build/Release+Asserts/bin/../<span class="class"><span class="keyword">lib</span>/<span class="title">clang</span>/3.9.0/<span class="title">include</span>/<span class="title">linux</span>/<span class="title">sysinfo</span>.<span class="title">h</span>:10:2: <span class="title">error</span>: <span class="title">unknown</span> <span class="title">type</span> <span class="title">name</span> '<span class="title">__kernel_ulong_t</span>'</span></div></pre></td></tr></table></figure>
+<p>Solve:</p>
+<ol>
+<li>grep  -r “__kernel_ulong_t” . 先看看这个变量在什么地方<br>将<code>/usr/include/asm-generic/posix-types.h</code>的:</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __kernel_long_t</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span>            <span class="keyword">__kernel_long_t</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span>   <span class="keyword">__kernel_ulong_t</span>;</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div></pre></td></tr></table></figure>
+<p>添加到<br> <code>/home/dev/Develop/chromiumorg/chromium/src/build/linux/debian_wheezy_amd64-sysroot/usr/include/x86_64-linux-gnu/asm/posix-types.h</code></p>
+<h3 id="4-问题4"><a href="#4-问题4" class="headerlink" title="4. 问题4"></a>4. 问题4</h3><p>build error. Initial unount failed. Possibly crosbug.com/23443</p>
+<p>When I build:<br><code>ninja -C out_amd64-generic/Release -j1 chrome chrome_sandbox nacl_helper</code></p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line">losetup: /dev/loop2: detach failed: No such device or address</div><div class="line">WARNING : losetup -d /dev/loop2 failed (try 1)</div><div class="line">+ sudo losetup -a</div><div class="line">/dev/loop0: [0045]:694630 (/home/dev/test.dat)</div><div class="line">/dev/loop1: [0045]:694630 (/home/dev/test.dat)</div><div class="line">+ grep -H /dev/loop2 /proc/mounts</div><div class="line">+ true</div><div class="line">+ set +x</div><div class="line">losetup: /dev/loop2: detach failed: No such device or address</div><div class="line">WARNING : losetup -d /dev/loop2 failed (try 2)</div><div class="line"></div><div class="line">and build .</div><div class="line">then get an error:</div><div class="line"></div><div class="line"></div><div class="line">plain floppy: device "/proc/950/fd/3" busy (Resource temporarily unavailable):</div><div class="line">Cannot initialize 'S:'</div><div class="line">Bad target s:/ldlinux.sys</div><div class="line">syslinux: failed to create ldlinux.sys</div><div class="line"><span class="keyword">ERROR   </span>: 2016年 05月 05日 星期四 15:28:00 CST</div><div class="line"><span class="keyword">ERROR   </span>:  PGID  PPID   PID     ELAPSED     TIME %CPU COMMAND</div><div class="line"><span class="keyword">ERROR   </span>:     6     6    10       13:01 00:00:00  0.0 /bin/bash ./build_image --board=amd64-generic --noenable_rootfs_verification dev</div><div class="line"><span class="keyword">ERROR   </span>:     6    10 30796       00:24 00:00:00  0.2  \_ /bin/bash /mnt/host/source/src/scripts/bin/cros_make_image_bootable/mnt/host/source/src/build/images/amd64-generic/R52<span class="string">-8277</span>.0.2016_05_05_1515-a1 chromiumos_image.bin --force_developer_mode</div><div class="line"><span class="keyword">ERROR   </span>:     6 30796   746       00:00 00:00:00  0.0      \_ /bin/bash /mnt/host/source/src/scripts/update_bootloaders.sh --arch=amd64 --to=/mnt/host/source/src/build/images/amd64-generic/R52<span class="string">-8277</span>.0.2016_05_05_1515-a1/chromiumos_image.bin --from=/mnt/host/source/src/build/images/amd64-generic/R52<span class="string">-8277</span>.0.2016_05_05_1515-a1/rootfs_dir/boot --vmlinuz=/mnt/host/source/src/build/images/amd64-generic/R52<span class="string">-8277</span>.0.2016_05_05_1515-a1/rootfs_dir/boot/vmlinuz --to_offset=127926272 --to_size=16777216 --kernel_partition='/mnt/host/source/src/build/images/amd64-generic/R52<span class="string">-8277</span>.0.2016_05_05_1515-a1/vmlinuz.image' --install_syslinux</div><div class="line"><span class="keyword">ERROR   </span>:     6   746   958       00:00 00:00:00  0.0          \_ /bin/bash /mnt/host/source/src/scripts/update_bootloaders.sh--arch=amd64 --to=/mnt/host/source/src/build/images/amd64-generic/R52<span class="string">-8277</span>.0.2016_05_05_1515-a1/chromiumos_image.bin --from=/mnt/host/source/src/build/images/amd64-generic/R52<span class="string">-8277</span>.0.2016_05_05_1515-a1/rootfs_dir/boot --vmlinuz=/mnt/host/source/src/build/images/amd64-generic/R52<span class="string">-8277</span>.0.2016_05_05_1515-a1/rootfs_dir/boot/vmlinuz --to_offset=127926272 --to_size=16777216 --kernel_partition='/mnt/host/source/src/build/images/amd64-generic/R52<span class="string">-8277</span>.0.2016_05_05_1515-a1/vmlinuz.image' --install_syslinux</div><div class="line"><span class="keyword">ERROR   </span>:     6   958   959       00:00 00:00:00  0.0              \_ ps f -o pgid,ppid,pid,etime,cputime,%cpu,command</div><div class="line"><span class="keyword">ERROR   </span>: Arguments of 746:  '--arch=amd64' '--to=/mnt/host/source/src/build/images/amd64-generic/R52<span class="string">-8277</span>.0.2016_05_05_1515-a1/chromiumos_image.bin' '--from=/mnt/host/source/src/build/images/amd64-generic/R52<span class="string">-8277</span>.0.2016_05_05_1515-a1/rootfs_dir/boot''--vmlinuz=/mnt/host/source/src/build/images/amd64-generic/R52<span class="string">-8277</span>.0.2016_05_05_1515-a1/rootfs_dir/boot/vmlinuz' '--to_offset=127926272' '--to_size=16777216' '--kernel_partition='/mnt/host/source/src/build/images/amd64-generic/R52<span class="string">-8277</span>.0.2016_05_05_1515-a1/vmlinuz.image'' '--install_syslinux'</div><div class="line"><span class="keyword">ERROR   </span>: Backtrace:  (most recent call is last)</div><div class="line"><span class="keyword">ERROR   </span>:  update_bootloaders.sh:195:main(), called: die_err_trap  </div><div class="line"><span class="keyword">ERROR   </span>: </div><div class="line"><span class="keyword">ERROR   </span>: Command failed:</div><div class="line"><span class="keyword">ERROR   </span>:   Command 'sudo syslinux -d /syslinux "$&#123;ESP_DEV&#125;"' exited with nonzero code: 1</div><div class="line">umount: /tmp/esp.eZETwO: not mounted</div><div class="line">WARNING : Initial unmount failed. Possibly crosbug.com/23443. Retrying</div><div class="line">umount: /tmp/esp.eZETwO: not mounted</div><div class="line">INFO    : Unmounting image from /mnt/host/source/src/build/images/amd64-generic/R52<span class="string">-8277</span>.0.2016_05_05_1515-a1/stateful_dir and/mnt/host/source/src/build/images/amd64-generic/R52<span class="string">-8277</span>.0.2016_05_05_1515-a1/rootfs_dir</div><div class="line">Cleaning up /usr/local symlinks for /mnt/host/source/src/build/images/amd64-generic/R52<span class="string">-8277</span>.0.2016_05_05_1515-a1/stateful_dir/dev_image</div><div class="line"><span class="keyword">ERROR   </span>: 2016年 05月 05日 星期四 15:28:06 CST</div><div class="line"><span class="keyword">ERROR   </span>:  PGID  PPID   PID     ELAPSED     TIME %CPU COMMAND</div><div class="line"><span class="keyword">ERROR   </span>:     6     6    10       13:07 00:00:00  0.0 /bin/bash ./build_image --board=amd64-generic --noenable_rootfs_verification dev</div><div class="line"><span class="keyword">ERROR   </span>:     6    10 30796       00:30 00:00:00  0.2  \_ /bin/bash /mnt/host/source/src/scripts/bin/cros_make_image_bootable/mnt/host/source/src/build/images/amd64-generic/R52<span class="string">-8277</span>.0.2016_05_05_1515-a1 chromiumos_image.bin --force_developer_mode</div><div class="line"><span class="keyword">ERROR   </span>:     6 30796  1289       00:00 00:00:00  0.0      \_ /bin/bash /mnt/host/source/src/scripts/bin/cros_make_image_bootable /mnt/host/source/src/build/images/amd64-generic/R52<span class="string">-8277</span>.0.2016_05_05_1515-a1 chromiumos_image.bin--force_developer_mode</div><div class="line"><span class="keyword">ERROR   </span>:     6  1289  1290       00:00 00:00:00  0.0          \_ ps f -o pgid,ppid,pid,etime,cputime,%cpu,command</div><div class="line"><span class="keyword">ERROR   </span>: Arguments of 30796:  '/mnt/host/source/src/build/images/amd64-generic/R52<span class="string">-8277</span>.0.2016_05_05_1515-a1''chromiumos_image.bin' '--force_developer_mode'</div><div class="line"><span class="keyword">ERROR   </span>: Backtrace:  (most recent call is last)</div><div class="line"><span class="keyword">ERROR   </span>:  cros_make_image_bootable:430:main(), called: make_image_bootable '/mnt/host/source/src/build/images/amd64-generic/R52<span class="string">-8277</span>.0.2016_05_05_1515-a1/chromiumos_image.bin' </div><div class="line"><span class="keyword">ERROR   </span>:  cros_make_image_bootable:1:make_image_bootable(), called: die 'cros_make_image_bootable failed.' </div><div class="line"><span class="keyword">ERROR   </span>: </div><div class="line"><span class="keyword">ERROR   </span>: Error was:</div><div class="line"><span class="keyword">ERROR   </span>:   cros_make_image_bootable failed.</div></pre></td></tr></table></figure>
+<p>Solve:</p>
+<ol>
+<li>I see that maybe it ‘s a bug :crosbug.com/23443</li>
+<li>search in google group, find a url:<a href="https://bugs.chromium.org/p/chromium/issues/detail?id=508713" target="_blank" rel="external">https://bugs.chromium.org/p/chromium/issues/detail?id=508713</a><br>In comment12 , see somebody had solved the problem:<br><a href="https://chromium-review.googlesource.com/#/c/303962/1/update_bootloaders.sh" target="_blank" rel="external">https://chromium-review.googlesource.com/#/c/303962/1/update_bootloaders.sh</a><br>edit the update_bootloaders.sh and run the cros_sdk again</li>
+</ol>
+<p>Reason:<br>Maybe the reason is that<br>the The current mtools already takes a lock; it’s just not patient enough to wait for it and expecting the caller (Syslinux) to retry until available. Syslinux does not retry, does not look at the specific error code and just dies:<br>We cannot syslinux ESP_DEV directly because of a race condition with udev.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 调试 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> chromium </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[笔记 高级bash编程指南]]></title>
+      <url>/2016/05/06/advanced-bash-scripting-guide-1-md/</url>
+      <content type="html"><![CDATA[<h2 id="相关知识点"><a href="#相关知识点" class="headerlink" title="相关知识点"></a>相关知识点</h2><p>.  命令等价于source命令</p>
+<a id="more"></a>
+<p>{} 代码块.又被称为内部组.事实上,这个结构创建了一个匿名的函数.但是与函数不同的是,在其中声明的变量,对于脚本其他部分的代码来说还是可见的.如: </p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">bash$</span></div><div class="line"><span class="keyword">&#123;</span></div><div class="line"><span class="keyword">local </span>a<span class="comment">;</span></div><div class="line">a= <span class="number">123</span><span class="comment">; </span></div><div class="line">&#125;</div><div class="line">``` </div><div class="line"> </div><div class="line"><span class="keyword">bash </span>中的 local 申请的变量只能够用在函数中。</div></pre></td></tr></table></figure>
+<p>a=123<br>{<br>     a=321;<br>}<br>echo “a = $a”<br>(说明在代码块中对变量 a 所作的修改,影响了外边的变量a)  </p>
+<p>result: a = 321<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
+<p>$0 这个程式的执行名字<br>$n 这个程式的第n个参数值，n=1..9<br>$<em> 这个程式的所有参数,此选项参数可超过9个。<br>$# 这个程式的参数个数<br>$$ 这个程式的PID(脚本运行的当前进程ID号)<br>$! 执行上一个背景指令的PID(后台运行的最后一个进程的进程ID号)<br>$? 执行上一个指令的返回值 (显示最后命令的退出状态。0表示没有错误，其他任何值表明有错误)<br>$- 显示shell使用的当前选项，与set命令功能相同<br>$@ 跟$</em>类似，但是可以当作数组用<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">## Linux test shell []()用法:</div></pre></td></tr></table></figure></p>
+<p>`1. 关于某个文件名的『类型』侦测(存在与否)，如 test -e filename<br>-e 该『文件名』是否存在？(常用)<br>-f 该『文件名』是否为文件(file)？(常用)<br>-d 该『文件名』是否为目录(directory)？(常用)<br>-b 该『文件名』是否为一个 block device 装置？<br>-c 该『文件名』是否为一个 character device 装置？<br>-S 该『文件名』是否为一个 Socket 文件？<br>-p 该『文件名』是否为一个 FIFO (pipe) 文件？<br>-L 该『文件名』是否为一个连结档？</p>
+<ol>
+<li>关于文件的权限侦测，如 test -r filename<br>-r 侦测该文件名是否具有『可读』的属性？<br>-w 侦测该文件名是否具有『可写』的属性？<br>-x 侦测该文件名是否具有『可执行』的属性？<br>-u 侦测该文件名是否具有『SUID』的属性？<br>-g 侦测该文件名是否具有『SGID』的属性？<br>-k 侦测该文件名是否具有『Sticky bit』的属性？<br>-s 侦测该文件名是否为『非空白文件』？3. 两个文件之间的比较，如： test file1 -nt file2<br>-nt (newer than)判断 file1 是否比 file2 新<br>-ot (older than)判断 file1 是否比 file2 旧<br>-ef 判断 file2 与 file2 是否为同一文件，可用在判断 hard link 的判定上。 主要意义在判定，两个文件是否均指向同一个 inode 哩！4. 关于两个整数之间的判定，例如 test n1 -eq n2<br>-eq 两数值相等 (equal)<br>-ne 两数值不等 (not equal)<br>-gt n1 大于 n2 (greater than)<br>-lt n1 小于 n2 (less than)<br>-ge n1 大于等于 n2 (greater than or equal)<br>-le n1 小于等于 n2 (less than or equal)5. 判定字符串的数据<br>test -z string 判定字符串是否为 0 ？若 string 为空字符串，则为 true<br>test -n string 判定字符串是否非为 0 ？若 string 为空字符串，则为 false。<br>注： -n 亦可省略<br>test str1 = str2 判定 str1 是否等于 str2 ，若相等，则回传 true<br>test str1 != str2 判定 str1 是否不等于 str2 ，若相等，则回传 false6. 多重条件判定，例如： test -r filename -a -x filename<br>-a (and)两状况同时成立！例如 test -r file -a -x file，则 file 同时具有 r 与 x 权限时，才回传 true。<br>-o (or)两状况任何一个成立！例如 test -r file -o -x file，则 file 具有 r 或 x 权限时，就可回传 true。<br>! 反相状态，如 test ! -x file ，当 file 不具有 x 时，回传 true分享：<br>```</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 读书笔记 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> bash </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[教你SSH到docker容器里]]></title>
+      <url>/2016/01/27/docker-linktossh/</url>
+      <content type="html"><![CDATA[<h2 id="1-查看容器Ip"><a href="#1-查看容器Ip" class="headerlink" title="1. 查看容器Ip"></a>1. 查看容器Ip</h2><figure class="highlight mel"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker inspect --<span class="keyword">format</span>=<span class="string">'&#123;&#123;.NetworkSettings.IPAddress&#125;&#125;'</span> $CONTAINER_ID</div></pre></td></tr></table></figure>
+<h2 id="2-添加网络规则"><a href="#2-添加网络规则" class="headerlink" title="2. 添加网络规则"></a>2. 添加网络规则</h2><p>让docker容器内的22端口映射到宿主机上的12345</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -t<span class="built_in"> nat </span>-A DOCKER -p tcp -m tcp  --dport 12345 -j DNAT --to-destination 192.168.1.1:22</div></pre></td></tr></table></figure>
+<a id="more"></a> 
+<h2 id="3-修改docker容器的密码"><a href="#3-修改docker容器的密码" class="headerlink" title="3. 修改docker容器的密码"></a>3. 修改docker容器的密码</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">passwd</span></div></pre></td></tr></table></figure>
+<h2 id="4-为docker容器安装ssh服务"><a href="#4-为docker容器安装ssh服务" class="headerlink" title="4. 为docker容器安装ssh服务"></a>4. 为docker容器安装ssh服务</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-<span class="builtin-name">get</span> install openssh-server</div><div class="line">修改`/etc/ssh/sshd_config`的：</div><div class="line">	PermitRootLogin <span class="literal">yes</span></div></pre></td></tr></table></figure>
+<h2 id="5-测试一下"><a href="#5-测试一下" class="headerlink" title="5. 测试一下"></a>5. 测试一下</h2><pre><code>ssh -p 20072 root@xxx.com
+</code></pre><h2 id="6-打开Webstorm"><a href="#6-打开Webstorm" class="headerlink" title="6. 打开Webstorm"></a>6. 打开Webstorm</h2><p>在Tools-Deployment中添加一个server</p>
+<p>result:<br><img src="http://i.imgur.com/8V0QkP4.png?1" alt="WebStorm ssh server"></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 运维 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> docker </tag>
+            
+            <tag> ssh </tag>
+            
+        </tags>
+        
+    </entry>
+    
+  
+  
+</search>
